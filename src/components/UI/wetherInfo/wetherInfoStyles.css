@@ -1,0 +1,6 @@
+.wether_info{
+    max-width: 100%;
+    background: #4F4F4F;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border-radius: 0px 0px 20px 20px;
+}

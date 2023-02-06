@@ -1,0 +1,57 @@
+.box_of_cards{
+    display: flex;
+    flex-direction: row;
+    
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border-radius: 0px 0px 20px 20px;
+    padding: 20px;
+    gap: 20px;
+}
+.black-background {
+    background-color: #4F4F4F;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 149px;
+    height: 200px;
+    border-radius: 10px;
+    padding: 11px;
+    justify-content: space-between;
+}
+.black_card{
+ background-color: #2E3035;
+}
+.white_card{
+    background-color: rgba(71, 147, 255, 0.2);
+}
+.black{
+    color: #000000;
+}
+.white{
+    color: #FFFFFF;
+}
+.gray{
+    color: #939CB0;
+}
+.day_of_week{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+.day_date{
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+.day_temperature{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+.main_font{
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+}

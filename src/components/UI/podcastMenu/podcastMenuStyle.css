@@ -1,0 +1,31 @@
+.podcastMenu{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    padding: 10px 0px;
+}
+.for_week{
+    background: #FFFFFF;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border-radius: 5px;
+}
+.main_style{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);    
+    border-radius: 5px;
+}
+.button{
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border-radius: 5px;
+    padding: 7px 20px;
+    border: none;
+}
+.black_background{
+    background-color: #4F4F4F;
+}
+.today_info_details{
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+    border-radius: 20px;    
+}

@@ -1,0 +1,60 @@
+.todayInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 50px;
+}
+.Main_info_temprature{
+    font-weight: 500;
+    font-size: 96px;
+    line-height: 117px;
+    color: #4793FF;
+}
+.todayInfo_Main_day{
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 49px;
+}
+.todayInfo_Main{
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+}
+.background_black{
+    background-color: #4F4F4F;
+}
+.Main_info{
+    
+}
+.black_info{}
+
+
+.Main_footer_time,.Main_footer_location{
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 30px;
+    color: #939CB0;
+}
+.today_info_details{
+    max-width: 750px;
+    width: 100%;
+    padding: 30px 40px;
+    background: url('../../../../public/img/imgDetails/cloud.png')no-repeat right top;
+}
+.thisDayItem_Details{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.today_item_value{
+
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+
+}

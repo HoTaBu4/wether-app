@@ -1,24 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import  ContextM  from './components/context/context';
+import { useCustomDispatch } from './components/hooks/store';
+import Header from './components/UI/header/Header';
+import Main from './components/UI/main/Main';
+import { fetchCurrentWether } from './store/thunks/fetchCurrentWether';
+
 
 function App() {
+  const [themeChange ,setThemeChange] = useState(Boolean)
+  const getTheme = ( data :boolean)=>{
+     setThemeChange(data)
+     return data
+  }
+
+  const dispatch = useCustomDispatch()
+  useEffect(() => {
+    dispatch(fetchCurrentWether('london'))
+  },[])
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={themeChange
+    ?
+      'App black_bg'
+    :
+      "App white_bg"
+    }>
+      <ContextM.Provider 
+        value={themeChange}
         >
-          Learn React
-        </a>
-      </header>
+        <Header getTheme={getTheme} />
+        <Main/>
+      </ContextM.Provider>
     </div>
   );
 }
