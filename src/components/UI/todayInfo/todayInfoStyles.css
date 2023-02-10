@@ -5,6 +5,8 @@
     gap: 50px;
 }
 .Main_info_temprature{
+    display: flex;
+    flex-direction: row;
     font-weight: 500;
     font-size: 96px;
     line-height: 117px;
@@ -14,6 +16,14 @@
     font-weight: 400;
     font-size: 40px;
     line-height: 49px;
+}
+.Main_img{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.Main_img > img{
+    width: 100px;
 }
 .todayInfo_Main{
     max-width: 400px;

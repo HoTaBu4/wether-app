@@ -1,18 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
 
 body{
-    max-width: 1200px;
     padding: 0;
     margin: auto;
     }
+#root{
+    height: 100%;
+}
 *{
     font-size: 13px;
     font-family: 'Montserrat', sans-serif;
 
 }
-body,.App,.black_bg{
+.App{
+    max-width: 1200px;
+    padding: 0;
+    margin: auto;
+    }
+.wrapper{
+    height: 100%;
+    width: 100%;
+}
+.root,.black_bg{
     background-color: black;
 }
-body,.App,.white_bg{
+.root,.white_bg{
     background-color: white;
 }

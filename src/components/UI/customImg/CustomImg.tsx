@@ -5,12 +5,10 @@ type text= {
 }
 
 const CustomImg = (text:text) =>{
-    console.log(text);
-    
     
     return(
         <>
-        <img src="./img/day/113.png" alt="" />
+            <img src="./img/day/113.png" alt=""  id='img'/>
         </>
     )
 }

@@ -23,16 +23,18 @@ function App() {
   return (
     <div className={themeChange
     ?
-      'App black_bg'
+      'wrapper black_bg'
     :
-      "App white_bg"
+      "wrapper white_bg"
     }>
-      <ContextM.Provider 
-        value={themeChange}
-        >
-        <Header getTheme={getTheme} />
-        <Main/>
-      </ContextM.Provider>
+      <div className='App'>
+        <ContextM.Provider 
+          value={themeChange}
+          >
+          <Header getTheme={getTheme} />
+          <Main/>
+        </ContextM.Provider>
+      </div>
     </div>
   );
 }

@@ -17,7 +17,12 @@ const TodayInfo = () => {
                 'background_white todayInfo_Main'
                 }>
                 <div className='Main_info' >
-                    <div className="Main_info_temprature">{wether.current.temp_c}°</div>
+                    <div className='Main_img'>
+                        <div className="Main_info_temprature">
+                            {wether.current.temp_c}° 
+                        </div>
+                        <CustomImg text={wether.current.condition.icon}/>
+                        </div>
                     <div className={theme 
                     ?
                     "white todayInfo_Main_day"
@@ -25,7 +30,7 @@ const TodayInfo = () => {
                     "black todayInfo_Main_day" 
                     }>
                         today</div>
-                    <CustomImg text={wether.current.condition.icon}/>
+                   
                 </div>
                 <div className="Main_footer">
                     <div className="Main_footer_time">time:{}</div>
