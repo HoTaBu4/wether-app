@@ -1,46 +1,47 @@
-# Getting Started with Create React App
+# Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Interactive weather dashboard that lets you switch between light/dark themes, browse multi-day forecasts, and dive into detailed day insights. Built with React, Redux Toolkit, and the Open-Meteo API.
 
-## Available Scripts
+## ✨ Features
+- Real-time current conditions with condition icons.
+- 7- or 10-day forecast slider with skeleton loading states and theme-aware styling.
+- Click a forecast card to sync the top summary and detailed stats panel.
+- Theme toggle (light/dark) with contextual UI updates.
+- City chooser with instant re-fetch via Open-Meteo geocoding.
+- GitHub Pages deployment workflow out of the box.
 
-In the project directory, you can run:
+## 🚀 Getting Started
 
-### `npm start`
+### Prerequisites
+- Node.js 18+
+- npm 8+
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Install & Run
+```bash
+npm install
+npm start
+```
+Visit `http://localhost:3000` for the dev build; edits hot reload automatically.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### Build for Production
+```bash
+npm run build
+```
+Outputs a production-optimized bundle to the `build/` directory.
 
-### `npm test`
+## 🛠 Tech Stack
+- React 18
+- Redux Toolkit + TypeScript
+- Axios
+- Open-Meteo API
+- GitHub Actions → GitHub Pages
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 Deployment
+This repo ships with `.github/workflows/deploy-github-pages.yml` so that pushes to `master` build the site and publish to GitHub Pages. Ensure repository settings → Pages source is set to **GitHub Actions**.
 
-### `npm run build`
+## 🤝 Contributing
+1. Fork the repo and create a feature branch.
+2. Run `npm run lint`/tests if you add them.
+3. Open a PR with a clear description of the change.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
