@@ -38,22 +38,6 @@ export const Days = ({
   setStartIndex(0);
  }, [forecastDays.length, effectiveItemsPerView]);
 
- useEffect(() => {
-  if (!selectedForecastDayId) {
-    return;
-  }
-  const selectedIndex = forecastDays.findIndex(day => day.isoDate === selectedForecastDayId);
-  if (selectedIndex === -1) {
-    return;
-  }
-  if (selectedIndex < startIndex || selectedIndex >= startIndex + effectiveItemsPerView) {
-    setStartIndex(() => {
-      const maxStart = Math.max(forecastDays.length - effectiveItemsPerView, 0);
-      return Math.min(selectedIndex, maxStart);
-    });
-  }
- }, [selectedForecastDayId, forecastDays, startIndex, effectiveItemsPerView]);
-
  const visibleDays = useMemo(() => {
   return forecastDays.slice(startIndex, startIndex + effectiveItemsPerView);
  }, [forecastDays, startIndex, effectiveItemsPerView]);
