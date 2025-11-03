@@ -1,36 +1,42 @@
-import React ,{useContext}from 'react'
-import  ContextM  from '../../context/context'
-import  './podcastMenuStyle.css'
-const PodcastMenu = () => {
-    const podcastFor7Days = () =>{
-        
-    }
-    const podcastFor10Days = () =>{
+import React, { useContext } from 'react';
+import ContextM from '../../context/context';
+import './podcastMenuStyle.css';
 
-    }
-    const theme = useContext(ContextM)
-    console.log(theme);
-    
+interface PodcastMenuProps {
+    onSelect: (days: number) => void;
+    selectedDays: number;
+}
+
+const PodcastMenu = ({ onSelect, selectedDays }: PodcastMenuProps) => {
+    const theme = useContext(ContextM);
+
+    const buildButtonClass = (isActive: boolean) => {
+        const baseClass = theme
+            ? 'white main_style button black_background'
+            : 'black main_style button ';
+        return isActive ? `${baseClass} button_active` : baseClass;
+    };
+
     return (
         <div className="podcastMenu">
-            <div className={theme 
-            ?
-                'white main_style button black_background'
-            :
-                'black main_style button '
-            }
-            onClick ={podcastFor7Days}
-            >for week</div>
-            <div
-            className={theme
-            ?
-                'white main_style button black_background'
-            :
-                'black main_style button '
-            }
-            onClick ={podcastFor10Days}
-            >for ten days</div>
+            <button
+                type="button"
+                className={buildButtonClass(selectedDays === 7)}
+                onClick={() => onSelect(7)}
+                aria-pressed={selectedDays === 7}
+            >
+                for week
+            </button>
+            <button
+                type="button"
+                className={buildButtonClass(selectedDays === 10)}
+                onClick={() => onSelect(10)}
+                aria-pressed={selectedDays === 10}
+            >
+                for ten days
+            </button>
         </div>
-    )
-}
-export default PodcastMenu
+    );
+};
+
+export default PodcastMenu;

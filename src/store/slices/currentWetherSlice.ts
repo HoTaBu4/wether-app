@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
-import { AxiosResponse } from 'axios'
 
 import { Wether } from '../types/types'
+import { WetherServiceResponse } from '../../services/wetherService'
 
 interface CurrentWether{
     wether:Wether;
@@ -20,6 +20,10 @@ const initialState :CurrentWether= {
         condition:{
             icon:'icon',
         }
+    },
+    forecast:{
+        requestedDays:0,
+        days:[]
     }
 },
     isLoading:false,//value for loadinf component
@@ -37,7 +41,7 @@ export const CurrentWetherSlice = createSlice({
         },
         fetchCurrentWetherSuccess(
             state,
-            action:PayloadAction<AxiosResponse<Wether>>
+            action:PayloadAction<WetherServiceResponse>
             ){
             state.isLoading = false //for stop showing loading component
             state.wether = action.payload.data
@@ -48,7 +52,7 @@ export const CurrentWetherSlice = createSlice({
         },
         fetchCurrentWetherError(            
             state,
-            action:PayloadAction<AxiosResponse<Wether>>
+            action:PayloadAction<WetherServiceResponse>
             ){
             state.isLoading =  false//for stop showing loading component
             state.response = {

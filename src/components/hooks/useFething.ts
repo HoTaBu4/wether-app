@@ -1,27 +1,24 @@
-import axios from "axios";
-import {useState} from 'react'
+import { useCallback, useState } from 'react';
+import { WetherService } from "../../services/wetherService";
+import { Wether } from "../../store/types/types";
 
-export const useFetching = (day?:string) => {
-    const [inLoading,setIsLoading] = useState(false)
-    const [error,setError] = useState<any |undefined>(undefined)
-    const [Days,setDays] = useState('days=7')
-    const Parser = async ()=> {
+export const useFetching = (city: string = "London", defaultDays: number = 7) => {
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<unknown>(undefined);
+
+    const parser = useCallback(async (days: number = defaultDays): Promise<Wether | null> => {
         try {
-            setIsLoading(true)
-
-            const response = await axios.get(`http://api.weatherapi.com/v1/forecast.json?key=4b19ce59ae9f465188395912232101 &q=London&days=10&aqi=no&alerts=no
-            `);
-            
-            
-            return
-        } catch (error) {
-            setError(error)
-        }finally{
-            setIsLoading(false)
+            setIsLoading(true);
+            setError(undefined);
+            const response = await WetherService.getCurrentWether(city, days);
+            return response.data;
+        } catch (err) {
+            setError(err);
+            return null;
+        } finally {
+            setIsLoading(false);
         }
-        
-    }
-    return[Parser,inLoading,error]
-}
+    }, [city, defaultDays]);
 
-
+    return [parser, isLoading, error] as const;
+};

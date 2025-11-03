@@ -1,43 +1,53 @@
-import React, { useContext }  from "react"
-import  ContextM  from "../../context/context"
-import { day } from "./days"
-import './cartStyle.css'
-interface Props{
-    Day:day;
+import React, { useContext } from "react";
+import ContextM from "../../context/context";
+import { ForecastDay } from "../../../store/types/types";
+import "./cartStyle.css";
+
+interface Props {
+    day: ForecastDay;
 }
 
-const Card = ({Day}:Props) => {
-    
-    const theme = useContext(ContextM)
+const Card = ({ day }: Props) => {
+    const theme = useContext(ContextM);
+    const maxTemp = Math.round(day.maxTempC);
+    const minTemp = Math.round(day.minTempC);
+
     return (
-        <>
-            <div className={theme 
-                ?
-                'black_card card'
-                :
-                'white_card card'
-                }>
-                <div className={
+        <div
+            className={
+                theme
+                    ? "black_card card"
+                    : "white_card card"
+            }
+        >
+            <div
+                className={
                     theme
-                    ?
-                    'white day_of_week'
-                    :
-                    "black day_of_week"
-                }>{Day.day}</div>
-                <div className="day_date gray">{Day.day_info}</div>
-                <img src="" alt="" />
-                <div className={
-                    theme 
-                    ?
-                    "white day_temperature"
-                    :
-                    "black day_temperature"
-                }>{Day.temp_day}</div>
-                <div className="night_temperature gray main_font">{Day.temp_night}</div>
-                <div className="wether_of_day gray main_font">{Day.info}</div> 
-            </div> 
-       </>
-    )
-}
+                        ? "white day_of_week"
+                        : "black day_of_week"
+                }
+            >
+                {day.weekday}
+            </div>
+            <div className="day_date gray">{day.dateLabel}</div>
+            <img src={day.icon} alt={day.description} />
+            <div
+                className={
+                    theme
+                        ? "white day_temperature"
+                        : "black day_temperature"
+                }
+            >
+                {`${maxTemp}°`}
+            </div>
+            <div className="night_temperature gray main_font">
+                {`${minTemp}°`}
+            </div>
+            <div className="wether_of_day gray main_font">
+                {day.description}
+            </div>
+        </div>
+    );
+};
 
-export default Card
+export default Card;
