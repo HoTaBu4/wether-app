@@ -1,4 +1,4 @@
-import React, { useState ,useEffect, useCallback} from 'react'
+import React, { useState ,useEffect, useCallback, useMemo} from 'react'
 import { useFetching } from '../../hooks/useFething';
 import { Days } from '../cards/days';
 import { ForecastDay, Wether } from '../../../store/types/types';
@@ -31,7 +31,7 @@ const WetherInfo = ({ selectedForecastDay, onSelectForecastDay, city }: WetherIn
     handleSelectDays(DEFAULT_FORECAST_DAYS);
   }, [handleSelectDays]); 
 
-  const forecastDays = data?.forecast?.days ?? [];
+  const forecastDays = useMemo(() => data?.forecast?.days ?? [], [data]);
   const showLoading = isLoading || !data;
 
   useEffect(() => {
