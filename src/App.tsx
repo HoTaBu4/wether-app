@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './App.css';
 import  ContextM  from './components/context/context';
 import { useCustomDispatch } from './components/hooks/store';
@@ -18,6 +18,10 @@ function App() {
   }
 
   const dispatch = useCustomDispatch()
+
+  const handleSelectForecastDay = useCallback((day: ForecastDay | null) => {
+    setSelectedForecastDay(day);
+  }, []);
   useEffect(() => {
     dispatch(fetchCurrentWether('london'))
   },[])
@@ -36,7 +40,7 @@ function App() {
           <Header getTheme={getTheme} />
           <Main
             selectedForecastDay={selectedForecastDay}
-            onSelectForecastDay={(day) => setSelectedForecastDay(day)}
+            onSelectForecastDay={handleSelectForecastDay}
           />
         </ContextM.Provider>
       </div>

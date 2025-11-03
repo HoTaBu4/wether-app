@@ -64,7 +64,7 @@ const WetherInfo = ({ selectedForecastDay, onSelectForecastDay }: WetherInfoProp
           onSelectDays={handleSelectDays}
           selectedDays={selectedDays}
           isLoading={showLoading}
-          onSelectForecastDay={(day) => onSelectForecastDay(day)}
+          onSelectForecastDay={onSelectForecastDay}
           selectedForecastDayId={selectedForecastDay?.isoDate}
         />
       </div>
