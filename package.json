@@ -2,7 +2,7 @@
   "name": "wether-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://hotabu4.github.io/wether-app",
+  "homepage": "https://hotabu4.github.io/weather-app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
     "@testing-library/jest-dom": "^5.16.5",
