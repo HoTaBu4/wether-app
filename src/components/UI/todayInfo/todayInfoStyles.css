@@ -17,6 +17,15 @@
     font-size: 40px;
     line-height: 49px;
 }
+.gray{
+    color: #939CB0;
+}
+.todayInfo_Main_date{
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    margin-top: 4px;
+}
 .Main_img{
     display: flex;
     flex-direction: row;

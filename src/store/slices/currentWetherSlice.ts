@@ -7,6 +7,10 @@ interface CurrentWether{
     wether:Wether;
     isLoading:boolean;
     response:Response;
+    location:{
+        name:string;
+        country?:string;
+    } | null;
 }
 type Response ={
     status:number,
@@ -30,7 +34,8 @@ const initialState :CurrentWether= {
     response:{
         status:0,
         message:'',
-    }
+    },
+    location:null
 }
 export const CurrentWetherSlice = createSlice({
     name:"current_wether",
@@ -49,6 +54,7 @@ export const CurrentWetherSlice = createSlice({
                 status:action.payload.status,
                 message: action.payload.statusText
             }
+            state.location = action.payload.location
         },
         fetchCurrentWetherError(            
             state,
@@ -59,6 +65,7 @@ export const CurrentWetherSlice = createSlice({
                 status:action.payload.status,
                 message: action.payload.statusText
             }
+            state.location = action.payload.location
         }
     }
 })

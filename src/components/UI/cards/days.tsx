@@ -10,11 +10,20 @@ interface Props{
   onSelectDays: (days: number) => void;
   selectedDays: number;
   isLoading: boolean;
+  onSelectForecastDay: (day: ForecastDay) => void;
+  selectedForecastDayId?: string;
 }
 
 const MAX_ITEMS_PER_VIEW = 6;
 
-export const Days = ({forecastDays, onSelectDays, selectedDays, isLoading}:Props) =>{
+export const Days = ({
+  forecastDays,
+  onSelectDays,
+  selectedDays,
+  isLoading,
+  onSelectForecastDay,
+  selectedForecastDayId,
+}:Props) =>{
  const theme = useContext(ContextM);
  const [startIndex, setStartIndex] = useState(0);
 
@@ -28,6 +37,22 @@ export const Days = ({forecastDays, onSelectDays, selectedDays, isLoading}:Props
  useEffect(() => {
   setStartIndex(0);
  }, [forecastDays.length, effectiveItemsPerView]);
+
+ useEffect(() => {
+  if (!selectedForecastDayId) {
+    return;
+  }
+  const selectedIndex = forecastDays.findIndex(day => day.isoDate === selectedForecastDayId);
+  if (selectedIndex === -1) {
+    return;
+  }
+  if (selectedIndex < startIndex || selectedIndex >= startIndex + effectiveItemsPerView) {
+    setStartIndex(() => {
+      const maxStart = Math.max(forecastDays.length - effectiveItemsPerView, 0);
+      return Math.min(selectedIndex, maxStart);
+    });
+  }
+ }, [selectedForecastDayId, forecastDays, startIndex, effectiveItemsPerView]);
 
  const visibleDays = useMemo(() => {
   return forecastDays.slice(startIndex, startIndex + effectiveItemsPerView);
@@ -63,6 +88,17 @@ export const Days = ({forecastDays, onSelectDays, selectedDays, isLoading}:Props
  }
  const cardContainerClass = baseClasses.join(' ');
 
+ const renderCards = (daysToRender: ForecastDay[]) => (
+  daysToRender.map(day => (
+    <Card
+      day={day}
+      key={day.isoDate}
+      isSelected={selectedForecastDayId === day.isoDate}
+      onSelect={onSelectForecastDay}
+    />
+  ))
+ );
+
  const skeletons = useMemo(() => Array.from({length: effectiveItemsPerView}, (_, index) => (
   <div className={theme ? 'black_card card skeleton_card' : 'white_card card skeleton_card'} key={`skeleton-${index}`}>
     <div className="skeleton-line skeleton-title" />
@@ -94,7 +130,7 @@ export const Days = ({forecastDays, onSelectDays, selectedDays, isLoading}:Props
             {isLoading
               ? skeletons
               : visibleDays.length > 0
-                ? visibleDays.map(day => <Card day={day} key={day.isoDate}/>)
+                ? renderCards(visibleDays)
                 : <div className="no_forecast_message">No forecast data available.</div>
             }
           </div>
@@ -113,7 +149,7 @@ export const Days = ({forecastDays, onSelectDays, selectedDays, isLoading}:Props
           {isLoading
             ? skeletons
             : forecastDays.length > 0
-              ? forecastDays.map(day => <Card day={day} key={day.isoDate}/>)
+              ? renderCards(forecastDays)
               : <div className="no_forecast_message">No forecast data available.</div>
           }
         </div>

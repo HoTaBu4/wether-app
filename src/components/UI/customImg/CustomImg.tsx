@@ -1,15 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-type text= {
-    text:string
+interface CustomImgProps {
+    src?: string;
+    alt?: string;
+    className?: string;
 }
 
-const CustomImg = (text:text) =>{
-    
-    return(
-        <>
-            <img src="./img/day/113.png" alt=""  id='img'/>
-        </>
-    )
-}
-export default CustomImg
+const FALLBACK_ICON = "./img/day/113.png";
+
+const CustomImg = ({ src, alt = 'weather icon', className }: CustomImgProps) => {
+    return (
+        <img
+            src={src || FALLBACK_ICON}
+            alt={alt}
+            id="img"
+            className={className}
+        />
+    );
+};
+
+export default CustomImg;

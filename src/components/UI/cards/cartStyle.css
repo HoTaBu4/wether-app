@@ -54,6 +54,7 @@
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     box-shadow: 0px 8px 18px rgba(12, 23, 52, 0.08);
+    cursor: pointer;
 }
 .black_card{
     background: linear-gradient(180deg, rgba(46,48,53,0.95) 0%, rgba(25,26,28,0.95) 100%);
@@ -147,6 +148,19 @@
 .black_card.card:hover{
     box-shadow: 0px 16px 32px rgba(0,0,0,0.45);
 }
+.card.selected_card{
+    transform: translateY(-8px);
+    box-shadow: 0px 16px 36px rgba(71,147,255,0.35);
+    border-color: rgba(71,147,255,0.5);
+}
+.black_card.selected_card{
+    border-color: rgba(255,255,255,0.35);
+    box-shadow: 0px 20px 36px rgba(0,0,0,0.55);
+}
+.card:focus-visible{
+    outline: 2px solid rgba(71,147,255,0.6);
+    outline-offset: 3px;
+}
 .card::before{
     content: '';
     position: absolute;
@@ -164,6 +178,7 @@
     overflow: hidden;
     border-radius: 16px;
     padding: 16px;
+    cursor: default;
 }
 .skeleton_card::before{
     display: none;

@@ -6,10 +6,12 @@ import { useCustomDispatch } from './components/hooks/store';
 import Header from './components/UI/header/Header';
 import Main from './components/UI/main/Main';
 import { fetchCurrentWether } from './store/thunks/fetchCurrentWether';
+import { ForecastDay } from './store/types/types';
 
 
 function App() {
   const [themeChange ,setThemeChange] = useState(Boolean)
+  const [selectedForecastDay, setSelectedForecastDay] = useState<ForecastDay | null>(null);
   const getTheme = ( data :boolean)=>{
      setThemeChange(data)
      return data
@@ -32,7 +34,10 @@ function App() {
           value={themeChange}
           >
           <Header getTheme={getTheme} />
-          <Main/>
+          <Main
+            selectedForecastDay={selectedForecastDay}
+            onSelectForecastDay={(day) => setSelectedForecastDay(day)}
+          />
         </ContextM.Provider>
       </div>
     </div>
