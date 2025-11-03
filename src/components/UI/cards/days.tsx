@@ -68,8 +68,10 @@ export const Days = ({forecastDays, onSelectDays, selectedDays, isLoading}:Props
     <div className="skeleton-line skeleton-title" />
     <div className="skeleton-line skeleton-subtitle" />
     <div className="skeleton-circle" />
-    <div className="skeleton-line skeleton-temp" />
-    <div className="skeleton-line skeleton-temp" />
+    <div className="temp_wrapper">
+      <div className="skeleton-line skeleton-temp" />
+      <div className="skeleton-line skeleton-temp" />
+    </div>
     <div className="skeleton-line skeleton-desc" />
   </div>
   )), [theme, effectiveItemsPerView]);

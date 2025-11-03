@@ -45,21 +45,27 @@
 .card{
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    width: 149px;
-    height: 200px;
-    border-radius: 10px;
-    padding: 11px;
     justify-content: space-between;
+    width: 170px;
+    min-height: 220px;
+    border-radius: 16px;
+    padding: 16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0px 8px 18px rgba(12, 23, 52, 0.08);
 }
 .black_card{
- background-color: #2E3035;
+    background: linear-gradient(180deg, rgba(46,48,53,0.95) 0%, rgba(25,26,28,0.95) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    box-shadow: 0px 10px 24px rgba(0,0,0,0.35);
 }
 .white_card{
-    background-color: rgba(71, 147, 255, 0.2);
+    background: linear-gradient(180deg, rgba(71,147,255,0.25) 0%, rgba(255,255,255,0.6) 100%);
+    border: 1px solid rgba(71,147,255,0.18);
 }
 .black{
-    color: #000000;
+    color: #0B131E;
 }
 .white{
     color: #FFFFFF;
@@ -67,25 +73,86 @@
 .gray{
     color: #939CB0;
 }
+.white_card .gray{
+    color: rgba(22, 31, 55, 0.6);
+}
 .day_of_week{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
 }
 .day_date{
     font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
+    font-size: 13px;
+    line-height: 16px;
 }
 .day_temperature{
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 32px;
 }
 .main_font{
     font-weight: 400;
-    font-size: 13px;
-    line-height: 16px;
+    font-size: 14px;
+    line-height: 18px;
+}
+.card_header{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+.card_header_text{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.card_icon{
+    width: 72px;
+    height: 72px;
+    object-fit: contain;
+    filter: drop-shadow(0px 6px 20px rgba(0,0,0,0.25));
+}
+.white_card .card_icon{
+    filter: drop-shadow(0px 8px 20px rgba(71,147,255,0.3));
+}
+.card_body{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.temp_wrapper{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+}
+.temp_max{
+    font-weight: 600;
+}
+.temp_min{
+    font-size: 15px;
+}
+.wether_of_day{
+    text-transform: capitalize;
+    letter-spacing: 0.3px;
+}
+.white_card .wether_of_day{
+    color: rgba(22,31,55,0.75);
+}
+.card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0px 10px 30px rgba(71,147,255,0.25);
+}
+.black_card.card:hover{
+    box-shadow: 0px 16px 32px rgba(0,0,0,0.45);
+}
+.card::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top right, rgba(255,255,255,0.18), transparent 55%);
+    pointer-events: none;
 }
 .no_forecast_message{
     font-size: 16px;
@@ -95,9 +162,21 @@
 .skeleton_card{
     position: relative;
     overflow: hidden;
+    border-radius: 16px;
+    padding: 16px;
+}
+.skeleton_card::before{
+    display: none;
 }
 .skeleton_line, .skeleton-line, .skeleton-circle{
     background: rgba(255,255,255,0.1);
+}
+.white_card .skeleton_line,
+.white_card .skeleton-line,
+.white_card .skeleton-circle,
+.white .skeleton_line,
+.white .skeleton-circle{
+    background: rgba(22, 31, 55, 0.08);
 }
 .skeleton_card::after{
     content: '';
@@ -121,10 +200,16 @@
     height: 14px;
 }
 .skeleton-circle{
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     border-radius: 50%;
     align-self: center;
+}
+.skeleton_card .temp_wrapper{
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-top: 20px;
 }
 .skeleton-temp{
     width: 40%;
@@ -133,6 +218,7 @@
 .skeleton-desc{
     width: 80%;
     height: 14px;
+    margin-top: 12px;
 }
 @keyframes shimmer{
     0%{
