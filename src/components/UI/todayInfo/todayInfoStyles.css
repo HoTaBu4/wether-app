@@ -60,7 +60,14 @@
     max-width: 750px;
     width: 100%;
     padding: 30px 40px;
-    background: url('../../../../public/img/imgDetails/cloud.png')no-repeat right top;
+    background: #F5F7FF url('../../../../public/img/imgDetails/cloud.png') no-repeat right top;
+    border-radius: 20px;
+    box-shadow: 2px 5px 25px -3px rgba(180, 180, 180, 0.25);
+}
+.black_background{
+    background: rgba(24, 28, 37, 0.92) url('../../../../public/img/imgDetails/cloud.png') no-repeat right top;
+    color: #E6ECFF;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }
 .thisDayItem_Details{
     display: flex;
@@ -76,4 +83,10 @@
     font-size: 14px;
     line-height: 17px;
 
+}
+.black_background .today_item_value{
+    color: #E6ECFF;
+}
+.black_background .today_item_name{
+    color: #A5B8FF;
 }

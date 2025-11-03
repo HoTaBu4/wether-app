@@ -20,9 +20,7 @@
     gap: 12px;
 }
 .slider_button{
-    background: rgba(71, 147, 255, 0.2);
     border: none;
-    color: #4773FF;
     font-size: 24px;
     border-radius: 8px;
     width: 40px;
@@ -30,14 +28,24 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, background 0.2s ease, color 0.2s ease;
+    background: rgba(71, 147, 255, 0.18);
+    color: #4773FF;
 }
 .slider_button:disabled{
     opacity: 0.4;
     cursor: default;
 }
 .slider_button:not(:disabled):hover{
-    opacity: 0.8;
+    opacity: 0.85;
+}
+.dark_theme .slider_button{
+    background: rgba(255, 255, 255, 0.12);
+    color: #F1F5FF;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+}
+.dark_theme .slider_button:not(:disabled):hover{
+    background: rgba(255, 255, 255, 0.2);
 }
 .black-background {
     background-color: #4F4F4F;

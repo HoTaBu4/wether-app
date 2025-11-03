@@ -113,7 +113,7 @@ export const Days = ({
   )), [theme, effectiveItemsPerView]);
 
  return(
-  <div className="podcast">
+  <div className={`podcast ${theme ? 'dark_theme' : ''}`}>
      <PodcastMenu onSelect={onSelectDays} selectedDays={selectedDays}/>
      {showSliderControls ? (
         <div className="forecast_slider">

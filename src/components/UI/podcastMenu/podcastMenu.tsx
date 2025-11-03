@@ -11,9 +11,8 @@ const PodcastMenu = ({ onSelect, selectedDays }: PodcastMenuProps) => {
     const theme = useContext(ContextM);
 
     const buildButtonClass = (isActive: boolean) => {
-        const baseClass = theme
-            ? 'white main_style button black_background'
-            : 'black main_style button ';
+        const modeClass = theme ? 'button dark' : 'button light';
+        const baseClass = `main_style ${modeClass}`;
         return isActive ? `${baseClass} button_active` : baseClass;
     };
 
