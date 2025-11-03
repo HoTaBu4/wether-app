@@ -1,0 +1,38 @@
+.theme_toggle{
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.theme_toggle--light{
+    background: rgba(71, 147, 255, 0.15);
+    color: #162137;
+    box-shadow: 0 6px 18px rgba(71, 147, 255, 0.25);
+}
+.theme_toggle--dark{
+    background: rgba(30, 32, 38, 0.85);
+    color: #F1F5FF;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+}
+.theme_toggle__icon{
+    font-size: 16px;
+    line-height: 1;
+}
+.theme_toggle__label{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+.theme_toggle:focus-visible{
+    outline: 2px solid rgba(71, 147, 255, 0.7);
+    outline-offset: 3px;
+}
+.theme_toggle:hover{
+    opacity: 0.9;
+}

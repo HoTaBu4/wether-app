@@ -6,15 +6,17 @@ import { ForecastDay } from "../../../store/types/types";
 interface MainProps {
     selectedForecastDay: ForecastDay | null;
     onSelectForecastDay: (day: ForecastDay | null) => void;
+    city: string;
 }
 
-const Main = ({ selectedForecastDay, onSelectForecastDay }: MainProps) => {
+const Main = ({ selectedForecastDay, onSelectForecastDay, city }: MainProps) => {
     return (
         <>
             <TodayInfo selectedForecastDay={selectedForecastDay}/>
             <WetherInfo
                 selectedForecastDay={selectedForecastDay}
                 onSelectForecastDay={onSelectForecastDay}
+                city={city}
             />
         </>
     );

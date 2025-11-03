@@ -10,21 +10,33 @@ import { ForecastDay } from './store/types/types';
 
 
 function App() {
-  const [themeChange ,setThemeChange] = useState(Boolean)
+  const [themeChange ,setThemeChange] = useState<boolean>(false);
+  const [city, setCity] = useState<string>('London');
   const [selectedForecastDay, setSelectedForecastDay] = useState<ForecastDay | null>(null);
-  const getTheme = ( data :boolean)=>{
-     setThemeChange(data)
-     return data
-  }
 
-  const dispatch = useCustomDispatch()
+  const dispatch = useCustomDispatch();
+
+  const handleThemeChange = useCallback(( data :boolean)=>{
+     setThemeChange(data);
+     return data;
+  },[]);
 
   const handleSelectForecastDay = useCallback((day: ForecastDay | null) => {
     setSelectedForecastDay(day);
   }, []);
+
+  const handleCityChange = useCallback((nextCity: string) => {
+    const trimmed = nextCity.trim();
+    if (!trimmed) {
+      return;
+    }
+    setCity(trimmed);
+    setSelectedForecastDay(null);
+  }, []);
+
   useEffect(() => {
-    dispatch(fetchCurrentWether('london'))
-  },[])
+    dispatch(fetchCurrentWether(city));
+  },[dispatch, city]);
   
   return (
     <div className={themeChange
@@ -37,10 +49,15 @@ function App() {
         <ContextM.Provider 
           value={themeChange}
           >
-          <Header getTheme={getTheme} />
+          <Header
+            getTheme={handleThemeChange}
+            city={city}
+            onCityChange={handleCityChange}
+          />
           <Main
             selectedForecastDay={selectedForecastDay}
             onSelectForecastDay={handleSelectForecastDay}
+            city={city}
           />
         </ContextM.Provider>
       </div>

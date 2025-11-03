@@ -8,10 +8,11 @@ const DEFAULT_FORECAST_DAYS = 7;
 interface WetherInfoProps {
   selectedForecastDay: ForecastDay | null;
   onSelectForecastDay: (day: ForecastDay | null) => void;
+  city: string;
 }
 
-const WetherInfo = ({ selectedForecastDay, onSelectForecastDay }: WetherInfoProps) => {
-  const [parser,isLoading,error] = useFetching()
+const WetherInfo = ({ selectedForecastDay, onSelectForecastDay, city }: WetherInfoProps) => {
+  const [parser,isLoading,error] = useFetching(city)
   const [data,setData] = useState<Wether | null>(null)
   const [selectedDays, setSelectedDays] = useState<number>(DEFAULT_FORECAST_DAYS)
 
